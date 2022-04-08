@@ -1,7 +1,8 @@
 const Plant = require('../models/plant');
 
 module.exports = {
-    index
+    index,
+    new: newPlant
 }
 
 function index(req, res) {
@@ -12,4 +13,10 @@ function index(req, res) {
             title: "All Plants"
         });
     })
+}
+
+function newPlant(req, res) {
+    res.render('plants/new', {
+        title: 'Add New Plant'
+    });
 }
