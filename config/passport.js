@@ -11,8 +11,8 @@ passport.use(new GoogleStrategy({
   function(accessToken, refreshToken, profile, cb) {
     // a user has logged in via OAuth!
     // refer to the lesson plan from earlier today in order to set this up
-    console.log(profile);
-    console.log('this is the profile ^ from google --------------------------------------------------');
+    // console.log(profile);
+    // console.log('this is the profile ^ from google --------------------------------------------------');
     // has the user logged in with oauth before?
     User.findOne({googleId: profile.id}, function(err, user) {
       // if user is defined, then we found someone who logged in before

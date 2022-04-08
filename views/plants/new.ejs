@@ -1,3 +1,30 @@
 <%- include('../partials/header') %>
 
+<form id="new-plant-form" action="/plants" method="POST">
+    <label>Common Name:</label>
+    <input type="text" name="commonName">
 
+    <label>Location:</label>
+    <select name="location">
+        <option value="office">office</option>
+        <option value="hall">hall</option>
+        <option value="kitchen">kitchen</option>
+        <option value="bathroom">bathroom</option>
+        <option value="terrace">terrace</option>
+        <option value="porch">porch</option>
+        <option value="balcony">balcony</option>
+        <option value="living room">living room</option>
+        <option value="patio">patio</option>
+        <option value="bedroom">bedroom</option>
+    </select>
+
+    <label>Light:</label>
+    <select name="light">
+        <option value="full sun">full sun</option>
+        <option value="part sun">part sun</option>
+        <option value="part shade">part shade</option>
+        <option value="full shade">full shade</option>
+    </select>
+
+    <input type="submit" value="Add Plant">
+</form>
