@@ -1,6 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const User = require('../models.user');
+const User = require('../models/user');
 
 // configuring Passport!
 passport.use(new GoogleStrategy({
@@ -46,7 +46,6 @@ passport.deserializeUser(function(id, done) {
   // When you call this done function, passport assigns the user document to 
   // req.user, which will be availible in every Single controller function,
   // so you always know the logged in user
-
 });
 
 
