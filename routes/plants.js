@@ -15,4 +15,10 @@ router.post('/', isLoggedIn, plantsCtrl.create);
 // localhost:3000/plants/:id
 router.get('/:id', isLoggedIn, plantsCtrl.show);
 
+// localhost:3000/plants/:id
+router.get('/:id/edit', isLoggedIn, plantsCtrl.edit);
+
+// localhost: 3000/plants/:id
+router.put('/:id', isLoggedIn, plantsCtrl.update);
+
 module.exports = router;

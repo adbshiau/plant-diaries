@@ -5,7 +5,9 @@ module.exports = {
     index,
     new: newPlant,
     create,
-    show
+    show,
+    edit,
+    update
 }
 
 function index(req, res) {
@@ -41,4 +43,29 @@ function show(req, res) {
             plant: plantDoc
         });
     })
+}
+
+function edit(req, res) {
+    Plant.findById((req.params.id), function(err, plantDoc) {
+        if (err || !plantDoc) return res.redirect('/plants')
+        res.render('plants/edit', {
+            title: 'Edit Plant',
+            plant: plantDoc
+        });
+    })
+}
+
+function update(req, res) {
+    Plant.findOneAndUpdate(
+        {_id: req.params.id, userOwns: req.user._id},
+        // update object with updated properties
+        req.body,
+        // options with new: true to make sure updated doc is returned
+        {new: true},
+        function(err, plantDoc) {
+            console.log(plantDoc)
+            if (err || !plantDoc) return res.redirect('/plants')
+            res.redirect(`/plants/${plantDoc._id}`); 
+        }
+    )
 }

@@ -1,11 +1,12 @@
 <%- include('../partials/header') %>
+<a href="<%= plant._id %>/edit">Edit</a><br>
 <label>Location:</label>
 <%= plant.location %><br> 
 <label>Light:</label>
 <%= plant.light %><br> 
 <label>Notes:</label><br>
 <% plant.notes.forEach(n => { %>
-    <%= n.content %> 
+    <%= n.content %><br> 
 <% }) %>
 <form 
     id="add-note-form" method="POST" action="/plants/<%= plant._id %>/notes">
