@@ -12,4 +12,7 @@ router.get('/new', isLoggedIn, plantsCtrl.new);
 // localhost:3000/plants
 router.post('/', isLoggedIn, plantsCtrl.create);
 
+// localhost:3000/plants/:id
+router.get('/:id', isLoggedIn, plantsCtrl.show);
+
 module.exports = router;
