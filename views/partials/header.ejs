@@ -14,7 +14,6 @@
     <% if (user) { %>
       <a href="/plants/new"	<%- title === 'Add Plant' ? 'class="active"' : '' %>>
       ADD PLANT</a>
-      <a href="/notes/new" <%- title === 'Add Note' ? 'class="active"' : '' %>>ADD NOTE</a>
       <a href="/logout">LOG OUT</a>
     <% } else { %>
       <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>

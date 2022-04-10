@@ -3,5 +3,12 @@
 <%= plant.location %><br> 
 <label>Light:</label>
 <%= plant.light %><br> 
-<label>Notes:</label>
-<%= plant.notes %> 
+<label>Notes:</label><br>
+<% plant.notes.forEach(n => { %>
+    <%= n.content %> 
+<% }) %>
+<form 
+    id="add-note-form" method="POST" action="/plants/<%= plant._id %>/notes">
+    <textarea name="content"></textarea>
+    <input type="submit" value="Add Note">
+</form>

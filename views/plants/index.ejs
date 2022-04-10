@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-
+<h3>Hello, <%= user.name %>!</h3>
 <% plants.forEach(p => { %>
-    <a href="plants/<%= p._id %>"><%= p.commonName %></a>
+    <a href="plants/<%= p._id %>"><%= p.commonName %></a><br>
 <% }) %>
