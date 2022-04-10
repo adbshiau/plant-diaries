@@ -1,15 +1,24 @@
-<%- include('../partials/header') %>
+<%- include('../partials/header') %> 
 <a href="<%= plant._id %>/edit">Edit</a><br>
+
 <label>Location:</label>
-<%= plant.location %><br> 
+<%= plant.location %><br/>
+
 <label>Light:</label>
-<%= plant.light %><br> 
-<label>Notes:</label><br>
-<% plant.notes.forEach(n => { %>
-    <%= n.content %><br> 
-<% }) %>
-<form 
-    id="add-note-form" method="POST" action="/plants/<%= plant._id %>/notes">
-    <textarea name="content"></textarea>
-    <input type="submit" value="Add Note">
+<%= plant.light %><br/>
+
+<label>Notes:</label>
+  <% plant.notes.forEach(n => { %>
+  <ul>
+    <li><%= n.content %></li>
+  </ul>
+  <% }) %>
+
+<form id="add-note-form" method="POST" action="/plants/<%= plant._id %>/notes">
+  <textarea name="content"></textarea><br>
+  <input type="submit" value="Add Note"/>
+</form><br/>
+
+<form action="/plants/<%= plant._id %>?_method=DELETE" method="POST">
+<button type="submit">Delete Plant</button>
 </form>

@@ -21,4 +21,7 @@ router.get('/:id/edit', isLoggedIn, plantsCtrl.edit);
 // localhost: 3000/plants/:id
 router.put('/:id', isLoggedIn, plantsCtrl.update);
 
+// localhost:3000/plants/:id
+router.delete('/:id', isLoggedIn, plantsCtrl.delete);
+
 module.exports = router;

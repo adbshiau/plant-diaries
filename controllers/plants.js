@@ -7,12 +7,13 @@ module.exports = {
     create,
     show,
     edit,
-    update
+    update,
+    delete: deletePlant
 }
 
 function index(req, res) {
     // console.log(req.user, ' <- req.user');
-    Plant.find({}, function(err, plantDocs) {
+    Plant.find({userOwns: req.user._id}, function(err, plantDocs) {
         res.render('plants/index', {
             plants: plantDocs,
             title: "All Plants"
@@ -66,6 +67,17 @@ function update(req, res) {
             console.log(plantDoc)
             if (err || !plantDoc) return res.redirect('/plants')
             res.redirect(`/plants/${plantDoc._id}`); 
+        }
+    )
+}
+
+function deletePlant(req, res) {
+    Plant.findOneAndDelete(
+        // ensure that plant was created by logged in user
+        {_id: req.params.id, userOwns: req.user._id},
+        function(err) {
+            // deleted the plant, redirect to index
+            res.redirect('/plants');
         }
     )
 }
