@@ -2,6 +2,7 @@
 <body>
 <h3>Hello, <%= user.name %>!</h3>
 <% plants.forEach(p => { %>
+    <img id="plant-image" src="<%= p.image %>"><br>
     <a href="plants/<%= p._id %>"><%= p.commonName %></a><br>
 <% }) %>
 </body>

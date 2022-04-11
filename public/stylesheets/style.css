@@ -48,3 +48,7 @@ body {
   font-family: 'Baloo 2', cursive;
 }
 
+#plant-image {
+  max-width: 50%;
+  height: auto;
+}

@@ -39,6 +39,7 @@ const plantSchema = new Schema({
     ref: "User",
   },
   notes: [noteSchema],
+  image: String
 });
 
 module.exports = mongoose.model("Plant", plantSchema);

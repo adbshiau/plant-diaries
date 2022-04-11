@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
 
 <body>
+  <img id="plant-image" src="<%= plant.image %> "/><br />
   <a href="<%= plant._id %>/edit">Edit Info</a><br />
 
   <label>Location:</label>
@@ -20,7 +21,9 @@
       <% plant.notes.forEach(n => { %>
       <tr>
         <td><%= n.content %></td>
-        <td><a href="/notes/<%= n._id %>/edit"><button>✎</button></a></td>
+        <td>
+          <a href="/notes/<%= n._id %>/edit"><button>✎</button></a>
+        </td>
         <td>
           <form action="/notes/<%= n._id %>?_method=DELETE" method="POST">
             <button type="submit">✕</button>
@@ -30,7 +33,7 @@
       <% }) %>
     </tbody>
   </table>
-  <% } %> 
+  <% } %>
 
   <form
     id="add-note-form"

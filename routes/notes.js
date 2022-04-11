@@ -9,7 +9,7 @@ router.post('/plants/:id/notes', isLoggedIn, notesCtrl.create);
 // localhost:3000/notes/:id
 router.delete('/notes/:id', isLoggedIn, notesCtrl.delete);
 
-// localhost:3000/plants/:id/notes
+// localhost:3000/notes/:id/edit
 router.get('/notes/:id/edit', isLoggedIn, notesCtrl.edit);
 
 // localhost:3000/notes/:id
