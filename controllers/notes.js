@@ -3,7 +3,8 @@ const Plant = require("../models/plant");
 
 module.exports = {
   create,
-  delete: deleteNote
+  delete: deleteNote,
+  edit
 };
 
 function create(req, res) {
@@ -32,4 +33,8 @@ function deleteNote(req, res) {
                 res.redirect(`/plants/${plantDoc._id}`);
             });
         });
+}
+
+function edit(req, res) {
+    res.send('edit page!')
 }

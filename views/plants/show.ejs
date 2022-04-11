@@ -20,9 +20,7 @@
       <tr>
         <td><%= n.content %></td>
         <td>
-          <form action="/notes/<%= n._id %>?_method=PUT" method="POST">
-            <button type="submit">✎</button>
-          </form>
+          <a href="/notes/<%= n.id %>">✎</a>
         </td>
         <td>
           <form action="/notes/<%= n._id %>?_method=DELETE" method="POST">
