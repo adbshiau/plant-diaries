@@ -52,3 +52,7 @@ body {
   max-width: 50%;
   height: auto;
 }
+
+#user-image {
+  border-radius: 50%;
+}
