@@ -1,4 +1,5 @@
 <%- include('../partials/header') %>
+
 <body>
   <a href="<%= plant._id %>/edit">Edit Info</a><br />
 
@@ -19,9 +20,7 @@
       <% plant.notes.forEach(n => { %>
       <tr>
         <td><%= n.content %></td>
-        <td>
-          <a href="/notes/<%= n.id %>">✎</a>
-        </td>
+        <td><a href="/notes/<%= n._id %>/edit"><button>✎</button></a></td>
         <td>
           <form action="/notes/<%= n._id %>?_method=DELETE" method="POST">
             <button type="submit">✕</button>

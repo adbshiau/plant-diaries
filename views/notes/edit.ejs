@@ -1,1 +1,6 @@
 <%- include('../partials/header') %>
+
+<form action="/notes/<%= note.id %>?_method=PUT" method="POST">
+    <input name="content" value="<%= note.content %>">
+    <button type="submit">✔</button>
+  </form>

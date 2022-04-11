@@ -4,7 +4,8 @@ const Plant = require("../models/plant");
 module.exports = {
   create,
   delete: deleteNote,
-  edit
+  edit,
+  update,
 };
 
 function create(req, res) {
@@ -15,26 +16,56 @@ function create(req, res) {
     req.body.userAvatar = req.user.avatar;
     // add note (req.body) to the plantDoc
     plantDoc.notes.push(req.body);
-    plantDoc.save(function(err) {
-        console.log(plantDoc, ' <- plantDoc')
-        res.redirect(`/plants/${plantDoc._id}`);
-    })
+    plantDoc.save(function (err) {
+      console.log(plantDoc, " <- plantDoc");
+      res.redirect(`/plants/${plantDoc._id}`);
+    });
   });
 }
 
-
 function deleteNote(req, res) {
-    Plant.findOne(
-        {'notes._id': req.params.id, 'notes.userId': req.user.id},
-        function(err, plantDoc) {
-            if(!plantDoc || err) return res.redirect(`/plants/${plantDoc._id}`);
-            plantDoc.notes.remove(req.params.id);
-            plantDoc.save(function(err) {
-                res.redirect(`/plants/${plantDoc._id}`);
-            });
-        });
+  Plant.findOne(
+    { "notes._id": req.params.id, "notes.userId": req.user.id },
+    function (err, plantDoc) {
+      if (!plantDoc || err) return res.redirect(`/plants/${plantDoc._id}`);
+      plantDoc.notes.remove(req.params.id);
+      plantDoc.save(function (err) {
+        res.redirect(`/plants/${plantDoc._id}`);
+      });
+    }
+  );
 }
 
 function edit(req, res) {
-    res.send('edit page!')
+  Plant.findOne(
+    { "notes._id": req.params.id, "notes.userId": req.user.id },
+    function (err, plantDoc) {
+        const note = plantDoc.notes.id(req.params.id);
+      if (!plantDoc || err) return res.redirect(`/plants/${plantDoc._id}`);
+      res.render("notes/edit", {
+        title: "Edit Note",
+        plant: plantDoc,
+        note
+      });
+    }
+  );
+}
+
+function update(req, res) {
+  // "dot" syntax to query on the property of the notes subdoc
+  Plant.findOne({ "notes._id": req.params.id }, function (err, plantDoc) {
+    // find the note subdoc using the id method on Mongoose arrays
+    const noteSubdoc = plantDoc.notes.id(req.params.id);
+    // ensure note was created by logged in user
+    if (!noteSubdoc.userId.equals(req.user.id))
+      return res.redirect(`/plants/${plants._id}`);
+    // update the content of the note
+    noteSubdoc.content = req.body.content;
+    console.log(noteSubdoc);
+    // save the updated plant note
+    plantDoc.save(function (err) {
+      // redirect to the plant's show view
+      res.redirect(`/plants/${plantDoc._id}`);
+    });
+  });
 }
