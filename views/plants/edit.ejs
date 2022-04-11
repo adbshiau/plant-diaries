@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-
+<body>
 <form action="/plants/<%= plant._id %>?_method=PUT" method="POST">
     <label>Common Name:</label>
     <input name="commonName" value="<%= plant.commonName %>"><br>
@@ -28,3 +28,4 @@
 
     <button type="submit">Update</button>
 </form>
+</body>

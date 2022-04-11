@@ -1,24 +1,51 @@
-<%- include('../partials/header') %> 
-<a href="<%= plant._id %>/edit">Edit</a><br>
+<%- include('../partials/header') %>
+<body>
+  <a href="<%= plant._id %>/edit">Edit Info</a><br />
 
-<label>Location:</label>
-<%= plant.location %><br/>
+  <label>Location:</label>
+  <%= plant.location %><br />
 
-<label>Light:</label>
-<%= plant.light %><br/>
+  <label>Light:</label>
+  <%= plant.light %><br />
 
-<label>Notes:</label>
-  <% plant.notes.forEach(n => { %>
-  <ul>
-    <li><%= n.content %></li>
-  </ul>
-  <% }) %>
+  <% if (plant.notes.length) { %>
+  <table>
+    <thead>
+      <tr>
+        Notes:
+      </tr>
+    </thead>
+    <tbody>
+      <% plant.notes.forEach(n => { %>
+      <tr>
+        <td><%= n.content %></td>
+        <td>
+          <form action="/notes/<%= n._id %>?_method=PUT" method="POST">
+            <button type="submit">✎</button>
+          </form>
+        </td>
+        <td>
+          <form action="/notes/<%= n._id %>?_method=DELETE" method="POST">
+            <button type="submit">✕</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <% } %> 
 
-<form id="add-note-form" method="POST" action="/plants/<%= plant._id %>/notes">
-  <textarea name="content"></textarea><br>
-  <input type="submit" value="Add Note"/>
-</form><br/>
+  <form
+    id="add-note-form"
+    method="POST"
+    action="/plants/<%= plant._id %>/notes"
+  >
+    <textarea name="content"></textarea><br />
+    <input type="submit" value="Add Note" />
+  </form>
+  <br />
 
-<form action="/plants/<%= plant._id %>?_method=DELETE" method="POST">
-<button type="submit">Delete Plant</button>
-</form>
+  <form action="/plants/<%= plant._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete Plant</button>
+  </form>
+</body>

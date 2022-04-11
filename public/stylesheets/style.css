@@ -39,3 +39,12 @@ form {
   display: block;
   margin-top: 0em;
 }
+
+#app-name {
+  font-family: 'Pacifico', cursive;
+}
+
+body {
+  font-family: 'Baloo 2', cursive;
+}
+
