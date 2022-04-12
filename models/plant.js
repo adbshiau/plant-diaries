@@ -15,7 +15,7 @@ const noteSchema = new Schema(
 
 const plantSchema = new Schema(
   {
-    // general information
+    // plant profile
     userOwns: {
       type: Schema.Types.ObjectId,
       ref: "User",
@@ -39,11 +39,9 @@ const plantSchema = new Schema(
         "bedroom",
       ],
     },
-    toxicity: {
-      type: String,
-      enum: ["human safe", "pet safe"],
-    },
-    // plant care details
+    humanSafe: Boolean,
+    petSafe: Boolean,
+    // plant care
     light: {
       type: String,
       enum: ["full sun", "part sun", "part shade", "full shade"],

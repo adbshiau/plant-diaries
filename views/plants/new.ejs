@@ -1,33 +1,71 @@
 <%- include('../partials/header') %>
 <body>
-<form id="new-plant-form" action="/plants" method="POST">
+  <h2>Plant Profile</h2>
+  <form id="new-plant-form" action="/plants" method="POST">
+    <label>Image:</label>
+    <input type="text" name="image" /><br />
+
     <label>Common Name:</label>
-    <input type="text" name="commonName"><br>
+    <input type="text" name="commonName" /><br />
+
+    <label>Scientific Name:</label>
+    <input type="text" name="scientificName" /><br />
+
+    <label>Adoption Date:</label>
+    <input type="date" name="adoptionDate" /><br />
 
     <label>Location:</label>
     <select name="location">
-        <option value="office">office</option>
-        <option value="hall">hall</option>
-        <option value="kitchen">kitchen</option>
-        <option value="bathroom">bathroom</option>
-        <option value="terrace">terrace</option>
-        <option value="porch">porch</option>
-        <option value="balcony">balcony</option>
-        <option value="living room">living room</option>
-        <option value="patio">patio</option>
-        <option value="bedroom">bedroom</option>
-    </select><br>
+      <option value="office">office</option>
+      <option value="hall">hall</option>
+      <option value="kitchen">kitchen</option>
+      <option value="bathroom">bathroom</option>
+      <option value="terrace">terrace</option>
+      <option value="porch">porch</option>
+      <option value="balcony">balcony</option>
+      <option value="living room">living room</option>
+      <option value="patio">patio</option>
+      <option value="bedroom">bedroom</option></select
+    ><br />
 
+    <label>Toxicity:</label>
+    <input type="checkbox" name="humanSafe"/><label>Human-Safe</label>
+    <input type="checkbox" name="petSafe"/><label>Pet-Safe</label><br />
+
+    <h2>Plant Care</h2>
     <label>Light:</label>
     <select name="light">
-        <option value="full sun">full sun</option>
-        <option value="part sun">part sun</option>
-        <option value="part shade">part shade</option>
-        <option value="full shade">full shade</option>
+      <option value="full sun">full sun</option>
+      <option value="part sun">part sun</option>
+      <option value="part shade">part shade</option>
+      <option value="full shade">full shade</option></select
+    ><br />
+
+    <label>Water:</label>
+    <input type="text" name="water"><br>
+
+    <label>Ideal Temperature:</label>
+    <input type="number" name="idealTemp"><br>
+
+    <label>Humidity:</label>
+    <input type="text" name="humidity"><br>
+
+    <label>Soil:</label>
+    <input type="text" name="soil"><br>
+
+    <label>Fertilizer</label>
+    <input type="text" name="fertilizer"><br>
+
+    <label>Propagation</label>
+    <select name="propagation">
+        <option value="seeds">seeds</option>
+        <option value="bulbs">bulbs</option>
+        <option value="food scraps">food scraps</option>
+        <option value="cuttings">cuttings</option>
+        <option value="layering">layering</option>
+        <option value="grafting">grafting</option>
     </select><br>
 
-    <label>Image:</label>
-    <input type="text" name="image"><br>
-    <input type="submit" value="Add Plant">
-</form>
+    <input type="submit" value="Add Plant" />
+  </form>
 </body>
