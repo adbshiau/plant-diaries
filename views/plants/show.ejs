@@ -11,7 +11,7 @@
 
   <% if (plant.adoptionDate) { %>
   <label>Adoption Date:</label>
-  <%= plant.adoptionDate %><br />
+  <%= plant.adoptionDate.split('-').reverse().join('-') %><br />
   <% } %>
 
   <label>Location:</label>
