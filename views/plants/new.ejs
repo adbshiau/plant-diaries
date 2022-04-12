@@ -1,9 +1,11 @@
 <%- include('../partials/header') %>
 <body>
   <h2>Plant Profile</h2>
-  <form id="new-plant-form" action="/plants" method="POST">
+  <form id="new-plant-form" action="/plants" method="POST" enctype="multipart/form-data">
+
+
     <label>Image:</label>
-    <input type="text" name="image" /><br />
+    <input type="file" name="image" /><br />
 
     <label>Common Name:</label>
     <input type="text" name="commonName" /><br />
@@ -29,8 +31,8 @@
     ><br />
 
     <label>Toxicity:</label>
-    <input type="checkbox" name="humanSafe"/><label>Human-Safe</label>
-    <input type="checkbox" name="petSafe"/><label>Pet-Safe</label><br />
+    <input name="humanSafe" type="checkbox"><label>Human-Safe</label>
+    <input name="petSafe" type="checkbox"><label>Pet-Safe</label>
 
     <h2>Plant Care</h2>
     <label>Light:</label>
@@ -45,10 +47,10 @@
     <input type="text" name="water"><br>
 
     <label>Ideal Temperature:</label>
-    <input type="number" name="idealTemp"><br>
+    <input type="number" name="idealTemp" min="50" max="90"><br>
 
     <label>Humidity:</label>
-    <input type="text" name="humidity"><br>
+    <input type="range" id="humidity" name="humidity" min="0" max="100" step="10"><br>
 
     <label>Soil:</label>
     <input type="text" name="soil"><br>

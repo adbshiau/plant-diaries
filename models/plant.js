@@ -23,7 +23,7 @@ const plantSchema = new Schema(
     image: String,
     commonName: String,
     scientificName: String,
-    adoptionDate: Date,
+    adoptionDate: String,
     location: {
       type: String,
       enum: [
@@ -39,8 +39,12 @@ const plantSchema = new Schema(
         "bedroom",
       ],
     },
-    humanSafe: Boolean,
-    petSafe: Boolean,
+    humanSafe: {
+        type: Boolean,
+    },
+    petSafe: {
+        type: Boolean,
+    },
     // plant care
     light: {
       type: String,

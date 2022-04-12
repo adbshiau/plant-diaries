@@ -28,11 +28,15 @@ function newPlant(req, res) {
 }
 
 function create(req, res) {
+    req.body.humanSafe = !!req.body.humanSafe;
+    req.body.petSafe = !!req.body.petSafe;
+    req.body.image = req.file.originalname;
     const plant = new Plant(req.body);
     plant.userOwns = req.user._id;
     plant.save(function(err) {
         if (err) return res.redirect('plants/new');
         console.log(plant, ' <- plant created')
+        console.log(req.file, ' <- req.file')
         res.redirect(`/plants/${plant._id}`);
     })
 }
@@ -49,6 +53,10 @@ function show(req, res) {
 function edit(req, res) {
     Plant.findById((req.params.id), function(err, plantDoc) {
         if (err || !plantDoc) return res.redirect('/plants')
+        
+        plantDoc.adoptionDate.toString()
+        // plantDoc.adoptionDate.split('T')
+        console.log(plantDoc.adoptionDate)
         res.render('plants/edit', {
             title: 'Edit Plant',
             plant: plantDoc

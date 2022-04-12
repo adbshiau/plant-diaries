@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
+const multer = require('multer');
+
 // session middleware
 const session = require('express-session');
 const passport = require('passport');
@@ -16,6 +18,23 @@ require('dotenv').config();
 // create the Express app
 const app = express();
 
+// // tells multer where to save your files
+// const fileStorageEngine = multer.diskStorage({ 
+// 	destination: (req, file, cb) => { 
+// 		cb(null, './public/images'); 
+// 	},
+// 	filename: (req, file, cb) => {
+//     cb(null, file.originalname);
+// 	},
+// });
+
+// const upload = multer({storage: fileStorageEngine}); 
+
+// app.post('/single', upload.single('image'), (req, res) => {
+// 	console.log(req.file);
+// 	res.send('Single file upload successful');
+// }) 
+
 // connect to the MongoDB with mongoose
 require('./config/database');
 
@@ -26,6 +45,7 @@ require('./config/passport');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// middleware
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));

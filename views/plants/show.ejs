@@ -1,14 +1,55 @@
 <%- include('../partials/header') %>
 
 <body>
-  <img id="plant-image" src="<%= plant.image %> "/><br />
+  <img id="plant-image" src="/images/<%= plant.image %> " /><br />
   <a href="<%= plant._id %>/edit">Edit Info</a><br />
+
+  <h2>Plant Profile</h2>
+
+  <label>Scientific Name:</label>
+  <%= plant.scientificName %><br />
+
+  <% if (plant.adoptionDate) { %>
+  <label>Adoption Date:</label>
+  <%= plant.adoptionDate %><br />
+  <% } %>
 
   <label>Location:</label>
   <%= plant.location %><br />
 
+  <label>Toxicity:</label>
+  <% if (plant.humanSafe && !plant.petSafe) { %> 
+    human-safe 
+    <% } %> 
+  <% if (plant.petSafe && !plant.humanSafe) { %> 
+    pet-safe 
+    <% } %> 
+  <% if (plant.humanSafe && plant.petSafe) { %> 
+    human-safe and pet-safe 
+    <% } %>
+
+  <h2>Plant Care</h2>
+
   <label>Light:</label>
   <%= plant.light %><br />
+
+  <label>Water:</label>
+  <%= plant.water %><br />
+
+  <label>Ideal Temperature:</label>
+  <%= plant.idealTemp %>°F<br />
+
+  <label>Humidity:</label>
+  <%= plant.humidity %>%<br />
+
+  <label>Soil:</label>
+  <%= plant.soil %><br />
+
+  <label>Fertilizer:</label>
+  <%= plant.fertilizer %><br />
+
+  <label>Propagation:</label>
+  <%= plant.propagation %><br />
 
   <% if (plant.notes.length) { %>
   <table>
