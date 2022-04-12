@@ -11,7 +11,7 @@ const fileStorageEngine = multer.diskStorage({
 		cb(null, './public/images'); 
 	},
 	filename: (req, file, cb) => {
-    cb(null, Date.now() + file.originalname);
+    cb(null, file.originalname);
 	},
 });
 
@@ -33,7 +33,7 @@ router.get('/:id', isLoggedIn, plantsCtrl.show);
 router.get('/:id/edit', isLoggedIn, plantsCtrl.edit);
 
 // localhost: 3000/plants/:id
-router.put('/:id', isLoggedIn, plantsCtrl.update);
+router.put('/:id', isLoggedIn, upload.single('image'), plantsCtrl.update);
 
 // localhost:3000/plants/:id
 router.delete('/:id', isLoggedIn, plantsCtrl.delete);

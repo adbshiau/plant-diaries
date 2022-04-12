@@ -53,10 +53,6 @@ function show(req, res) {
 function edit(req, res) {
     Plant.findById((req.params.id), function(err, plantDoc) {
         if (err || !plantDoc) return res.redirect('/plants')
-        
-        plantDoc.adoptionDate.toString()
-        // plantDoc.adoptionDate.split('T')
-        console.log(plantDoc.adoptionDate)
         res.render('plants/edit', {
             title: 'Edit Plant',
             plant: plantDoc
@@ -65,6 +61,11 @@ function edit(req, res) {
 }
 
 function update(req, res) {
+    req.body.humanSafe = !!req.body.humanSafe;
+    req.body.petSafe = !!req.body.petSafe;
+    if (req.body.image) {
+        req.body.image = req.file.originalname;
+    }
     Plant.findOneAndUpdate(
         {_id: req.params.id, userOwns: req.user._id},
         // update object with updated properties

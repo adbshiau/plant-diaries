@@ -2,7 +2,11 @@
 <body>
     <h2>Plant Profile</h2>
 
-    <form action="/plants/<%= plant._id %>?_method=PUT" method="POST">
+    <form action="/plants/<%= plant._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+    
+    <label>Image:</label>
+    <input type="file" name="image" /><br />
+
     <label>Common Name:</label>
     <input type="text" name="commonName" value="<%= plant.commonName %>"><br>
 
