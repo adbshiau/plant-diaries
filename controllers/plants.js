@@ -37,19 +37,17 @@ function create(req, res) {
     plant.save(function(err) {
         if (err) return res.redirect('plants/new');
         console.log(plant, ' <- plant created')
-        console.log(req.file, ' <- req.file')
         res.redirect(`/plants/${plant._id}`);
     })
 }
 
 function show(req, res) {
-    Plant.findById((req.params.id), function(err, plantDoc) {
-        console.log(plantDoc);
+    Plant.findOne({'_id': req.params.id}, function(err, plantDoc) {
         res.render('plants/show', {
-            title: plantDoc.commonName, 
+            title: plantDoc.commonName,
             plant: plantDoc
         });
-    })
+    });
 }
 
 function edit(req, res) {
@@ -68,6 +66,8 @@ function update(req, res) {
     if (req.body.image) {
         req.body.image = req.file.originalname;
     }
+    console.log(req.body.image, ' <- req.body.image');
+    console.log(req.file.originalname, ' <- req.file.originalname');
     Plant.findOneAndUpdate(
         {_id: req.params.id, userOwns: req.user._id},
         // update object with updated properties

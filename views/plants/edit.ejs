@@ -4,6 +4,8 @@
 
     <form action="/plants/<%= plant._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
     
+    <img id="plant-image" src="/images/<%= plant.image %> "/><br />
+
     <label>Image:</label>
     <input type="file" name="image" /><br />
 
