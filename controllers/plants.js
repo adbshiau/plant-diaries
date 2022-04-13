@@ -8,12 +8,14 @@ module.exports = {
     show,
     edit,
     update,
-    delete: deletePlant
+    delete: deletePlant,
+    // search
 }
 
 function index(req, res) {
     // console.log(req.user, ' <- req.user');
     Plant.find({userOwns: req.user._id}, function(err, plantDocs) {
+        console.log(plantDocs);
         res.render('plants/index', {
             plants: plantDocs,
             title: "All Plants"
@@ -90,3 +92,9 @@ function deletePlant(req, res) {
         }
     )
 }
+
+// function search(req, res) {
+//     res.render('plants/search', {
+//         title: 'Plant Search'
+//     });
+// }

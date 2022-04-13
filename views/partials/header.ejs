@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- <script defer src="public/app.js"></script> -->
+  <script defer src="app.js"></script>
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,8 +16,11 @@
 <body>
   <nav>
     <img id="logo" src="/images/logo.png">
-    <a href="/plants" <%- title === 'All Plants' ? 'class="active"' : '' %>>ALL PLANTS</a>
+    
+   
     <% if (user) { %>
+      <a href="/plants/search" <%- title === 'Plant Search' ? 'class="active"' : '' %>>PLANT SEARCH</a>
+      <a href="/plants" <%- title === 'All Plants' ? 'class="active"' : '' %>>ALL PLANTS</a>
       <a href="/plants/new"	<%- title === 'Add Plant' ? 'class="active"' : '' %>>
       ADD PLANT</a>
       <a href="/logout">LOG OUT</a>
