@@ -75,7 +75,7 @@ function update(req, res) {
         // options with new: true to make sure updated doc is returned
         {new: true},
         function(err, plantDoc) {
-            console.log(plantDoc)
+            console.log(plantDoc, ' <- plantDoc')
             if (err || !plantDoc) return res.redirect('/plants')
             res.redirect(`/plants/${plantDoc._id}`); 
         }
