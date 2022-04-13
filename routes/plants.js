@@ -4,7 +4,6 @@ const plantsCtrl = require('../controllers/plants');
 const isLoggedIn = require('../config/auth');
 const multer = require('multer');
 
-
 // tells multer where to save your files
 const fileStorageEngine = multer.diskStorage({ 
 	destination: (req, file, cb) => { 
@@ -37,8 +36,5 @@ router.put('/:id', isLoggedIn, upload.single('image'), plantsCtrl.update);
 
 // localhost:3000/plants/:id
 router.delete('/:id', isLoggedIn, plantsCtrl.delete);
-
-// localhost:3000/plants/search
-// router.get('/search', isLoggedIn, plantsCtrl.search);
 
 module.exports = router;

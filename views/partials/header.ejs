@@ -17,9 +17,8 @@
   <nav>
     <img id="logo" src="/images/logo.png">
     
-   
     <% if (user) { %>
-      <a href="/plants/search" <%- title === 'Plant Search' ? 'class="active"' : '' %>>PLANT SEARCH</a>
+      <a href="/search" <%- title === 'Plant Search' ? 'class="active"' : '' %>>PLANT SEARCH</a>
       <a href="/plants" <%- title === 'All Plants' ? 'class="active"' : '' %>>ALL PLANTS</a>
       <a href="/plants/new"	<%- title === 'Add Plant' ? 'class="active"' : '' %>>
       ADD PLANT</a>

@@ -8,8 +8,7 @@ module.exports = {
     show,
     edit,
     update,
-    delete: deletePlant,
-    // search
+    delete: deletePlant
 }
 
 function index(req, res) {
@@ -45,6 +44,7 @@ function create(req, res) {
 
 function show(req, res) {
     Plant.findById((req.params.id), function(err, plantDoc) {
+        console.log(plantDoc);
         res.render('plants/show', {
             title: plantDoc.commonName, 
             plant: plantDoc
@@ -92,9 +92,3 @@ function deletePlant(req, res) {
         }
     )
 }
-
-// function search(req, res) {
-//     res.render('plants/search', {
-//         title: 'Plant Search'
-//     });
-// }
