@@ -63,11 +63,11 @@ function edit(req, res) {
 function update(req, res) {
     req.body.humanSafe = !!req.body.humanSafe;
     req.body.petSafe = !!req.body.petSafe;
-    if (req.body.image) {
+    if (req.file) {
         req.body.image = req.file.originalname;
     }
     console.log(req.body.image, ' <- req.body.image');
-    console.log(req.file.originalname, ' <- req.file.originalname');
+    // console.log(req.file.originalname, ' <- req.file.originalname');
     Plant.findOneAndUpdate(
         {_id: req.params.id, userOwns: req.user._id},
         // update object with updated properties
