@@ -16,6 +16,9 @@ const fileStorageEngine = multer.diskStorage({
 
 const upload = multer({storage: fileStorageEngine}); 
 
+// converts HEIC images to JPEG
+
+
 // localhost:3000/plants
 router.get('/', isLoggedIn, plantsCtrl.index);
 

@@ -40,12 +40,14 @@ form {
   margin-top: 0em;
 }
 
-#app-name {
+#title {
   font-family: 'Pacifico', cursive;
 }
 
 body {
   font-family: 'Baloo 2', cursive;
+  background-color: #f2f2f2d9;
+  backgound-image: 
 }
 
 #plant-image {
@@ -55,4 +57,8 @@ body {
 
 #user-image {
   border-radius: 50%;
+}
+
+nav {
+  background-color: lightseagreen;
 }
