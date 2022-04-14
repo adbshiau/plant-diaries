@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
   <div id="show-page">
   <img id="plant-image" src="/images/<%= plant.image %> " /><br />
-  <a href="<%= plant._id %>/edit">Edit Information</a><br />
+  <a href="<%= plant._id %>/edit"><button class="btn btn-outline-success btn-sm">Edit Information</button></a><br />
 
   <h2>Plant Profile</h2>
 
@@ -80,13 +80,13 @@
   <% } %>
 
   <form id="add-note-form" method="POST" action="/plants/<%= plant._id %>/notes">
-    <textarea class="form-control" placeholder="Additional Care" name="content" id="floatingTextarea2" style="height: 100px"></textarea><br/>
-    <button type="submit" class="btn btn-success">Add Note</button>
+    <textarea class="form-control" placeholder="Additional Care" name="content" id="floatingTextarea2" style="height: 100px"></textarea>
+    <button type="submit" class="btn btn-success btn-sm">Add Note</button>
   </form>
   <br/>
 
   <form action="/plants/<%= plant._id %>?_method=DELETE" method="POST">
-    <button type="submit" class="btn btn-outline-danger">Delete Plant</button>
+    <button type="submit" class="btn btn-outline-danger btn-sm">Delete Plant</button>
   </form>
 </div>
   <%- include('../partials/footer') %>

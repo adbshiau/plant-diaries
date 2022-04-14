@@ -3,6 +3,7 @@ const router = express.Router();
 const plantsCtrl = require('../controllers/plants');
 const isLoggedIn = require('../config/auth');
 const multer = require('multer');
+const convert = require('heic-convert');
 
 // tells multer where to save your files
 const fileStorageEngine = multer.diskStorage({ 
@@ -16,7 +17,6 @@ const fileStorageEngine = multer.diskStorage({
 
 const upload = multer({storage: fileStorageEngine}); 
 
-// converts HEIC images to JPEG
 
 
 // localhost:3000/plants

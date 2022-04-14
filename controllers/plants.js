@@ -1,5 +1,8 @@
 const { redirect } = require('express/lib/response');
 const Plant = require('../models/plant');
+const { promisify } = require('util');
+const fs = require('fs');
+const convert = require('heic-convert');
 
 module.exports = {
     index,
@@ -29,16 +32,18 @@ function newPlant(req, res) {
 }
 
 function create(req, res) {
-    req.body.humanSafe = !!req.body.humanSafe;
-    req.body.petSafe = !!req.body.petSafe;
-    req.body.image = req.file.originalname;
-    const plant = new Plant(req.body);
-    plant.userOwns = req.user._id;
-    plant.save(function(err) {
-        if (err) return res.redirect('plants/new');
-        console.log(plant, ' <- plant created')
-        res.redirect(`/plants/${plant._id}`);
-    })
+    // req.body.humanSafe = !!req.body.humanSafe;
+    // req.body.petSafe = !!req.body.petSafe;
+    // req.body.image = req.file.originalname;
+    // const plant = new Plant(req.body);
+    // plant.userOwns = req.user._id;
+    // plant.save(function(err) {
+    //     if (err) return res.redirect('plants/new');
+    //     console.log(plant, ' <- plant created')
+    //     res.redirect(`/plants/${plant._id}`);
+    // })
+    heicToJpg(req.file)
+    console.log(req.file, 'req.file')
 }
 
 function show(req, res) {
@@ -92,3 +97,14 @@ function deletePlant(req, res) {
         }
     )
 }
+
+// converts HEIC images to JPEG
+async function heicToJpg(file) {
+    const inputBuffer = await promisify(fs.readFile)(file.path);
+    const outputBuffer = await convert({
+      buffer: inputBuffer, // the HEIC file buffer
+      format: 'JPEG',      // output format
+      quality: 1           // the jpeg compression quality, between 0 and 1
+    });
+    await promisify(fs.writeFile)(`${file.path}`.split('.heic').join('.jpeg'), outputBuffer);
+};

@@ -42,7 +42,7 @@ form {
 
 #title {
   font-family: 'Pacifico', cursive;
-  padding: 10px;
+  padding: 10px 10px 0px 10px;
 }
 
 body {
@@ -54,6 +54,8 @@ body {
 #plant-image {
   max-width: 100%;
   height: auto;
+  padding: 0px 0px 10px 0px;
+  /* border-radius: 30px; */
 }
 
 /* #user-image {
@@ -75,4 +77,19 @@ nav {
 
 #show-page {
   padding: 10px;
+}
+
+#edit-page {
+  padding: 10px;
+}
+
+#add-note-form {
+  padding: 10px 0px 0px 0px;
+}
+
+#floatingTextarea2 {
+  width: 50px
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-right: 10px
 }

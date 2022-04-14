@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-    <h2>Plant Profile</h2>
+<div id="edit-page">
 
     <form action="/plants/<%= plant._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
     
@@ -71,7 +71,7 @@
     </select><br>
     
 
-    <button type="submit">Update</button>
+    <button type="submit" class="btn btn-success btn-sm">Update</button>
 </form>
-
+</div>
 <%- include('../partials/footer') %>
