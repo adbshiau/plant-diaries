@@ -84,6 +84,14 @@ nav {
   padding: 10px;
 }
 
+#add-plants {
+  padding: 10px;
+}
+
+#add-plants-tag {
+  padding: 10px;
+}
+
 /* small is 576+ pixels */
 @media (min-width: 576px) {
   body {

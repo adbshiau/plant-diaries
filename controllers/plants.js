@@ -19,7 +19,7 @@ function index(req, res) {
         // console.log(plantDocs);
         res.render('plants/index', {
             plants: plantDocs,
-            title: "All Plants"
+            title: "Your Plants"
         });
     })
 }
