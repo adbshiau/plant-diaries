@@ -17,7 +17,7 @@ module.exports = {
 function index(req, res) {
     // console.log(req.user, ' <- req.user');
     Plant.find({userOwns: req.user._id}, function(err, plantDocs) {
-        console.log(plantDocs);
+        // console.log(plantDocs);
         res.render('plants/index', {
             plants: plantDocs,
             title: "All Plants"
@@ -32,18 +32,28 @@ function newPlant(req, res) {
 }
 
 function create(req, res) {
-    // req.body.humanSafe = !!req.body.humanSafe;
-    // req.body.petSafe = !!req.body.petSafe;
-    // req.body.image = req.file.originalname;
-    // const plant = new Plant(req.body);
-    // plant.userOwns = req.user._id;
-    // plant.save(function(err) {
-    //     if (err) return res.redirect('plants/new');
-    //     console.log(plant, ' <- plant created')
-    //     res.redirect(`/plants/${plant._id}`);
-    // })
-    heicToJpg(req.file)
-    console.log(req.file, 'req.file')
+    req.body.humanSafe = !!req.body.humanSafe;
+    req.body.petSafe = !!req.body.petSafe;
+
+    if (req.file.originalname.includes('.heic')) {
+        heicToJpg(req.file);
+        console.log("HEIC!!!")
+        req.body.image = req.file.originalname.split('.heic').join('.jpeg');
+    }
+    else req.body.image = req.file.originalname;
+    
+    const plant = new Plant(req.body);
+    plant.userOwns = req.user._id;
+    plant.save(function(err) {
+        if (err) return res.redirect('plants/new');
+        console.log(plant, ' <- plant created')
+        res.redirect(`/plants/${plant._id}`);
+    })
+    // if (req.file.originalname.includes('.heic')) {
+    //     heicToJpg(req.file);
+    //     console.log("HEIC!!!")
+    // }
+    // else console.log("NOT HEIC!!!")
 }
 
 function show(req, res) {
