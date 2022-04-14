@@ -1,24 +1,26 @@
 <%- include('../partials/header') %>
 <div id="edit-page">
-
+    <h1 id="title"><%= title %></h1>
     <form action="/plants/<%= plant._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
     
-    <img id="plant-image" src="/images/<%= plant.image %> "/><br />
+    <img id="plant-image" src="/images/<%= plant.image %> "/><br>
 
-    <label>Image:</label>
-    <input type="file" name="image" /><br />
+    <div class="mb-3">
+    <label for="update-image" class="form-label">Update Image:</label>
+    <input class="form-control form-control-sm" id="update-image" type="file" name="image"/>
+    </div>
 
     <label>Common Name:</label>
-    <input type="text" name="commonName" value="<%= plant.commonName %>"><br>
+    <input class="form-control form-control-sm" type="text" name="commonName" value="<%= plant.commonName %>">
 
     <label>Scientific Name:</label>
-    <input type="text" name="scientificName" value="<%= plant.scientificName %>"><br>
+    <input class="form-control form-control-sm" type="text" name="scientificName" value="<%= plant.scientificName %>">
 
     <label>Adoption Date:</label>
-    <input type="date" name="adoptionDate" value="<%= plant.adoptionDate %>"><br>
+    <input class="form-control form-control-sm" type="date" name="adoptionDate" value="<%= plant.adoptionDate %>">
     
     <label>Location:</label>
-    <select name="location" value="<%= plant.location %>">
+    <select class="form-select form-select-sm" name="location" value="<%= plant.location %>">
         <option value="office" <%= plant.location === "office" ? 'selected' : '' %>>office</option>
         <option value="hall" <%= plant.location === "hall" ? 'selected' : '' %>>hall</option>
         <option value="kitchen" <%= plant.location === "kitchen" ? 'selected' : '' %>>kitchen</option>
@@ -29,39 +31,43 @@
         <option value="living room" <%= plant.location === "living room" ? 'selected' : '' %>>living room</option>
         <option value="patio" <%= plant.location === "patio" ? 'selected' : '' %>>patio</option>
         <option value="bedroom" <%= plant.location === "bedroom" ? 'selected' : '' %>>bedroom</option>
-    </select><br>
+    </select>
 
-    <label>Toxicity:</label>
-    <input name="humanSafe" type="checkbox" <%= plant.humanSafe === true ? 'checked' : '' %>><label>Human-Safe</label>
-    <input name="petSafe" type="checkbox" <%= plant.petSafe === true ? 'checked' : '' %>><label>Pet-Safe</label><br>
+    <label>Toxicity:</label><br>
+    <div class="form-check form-check-inline">
+    <input class="form-check-input" name="humanSafe" id="human-safe"type="checkbox" <%= plant.humanSafe === true ? 'checked' : '' %>><label for="human-safe">Human-Safe</label>
+    </div>
+    <div class="form-check form-check-inline">
+    <input class="form-check-input" name="petSafe" id="pet-safe" type="checkbox" <%= plant.petSafe === true ? 'checked' : '' %>><label for="pet-safe">Pet-Safe</label><br>
+    </div>
 
     <h2>Plant Care</h2>
 
     <label>Light:</label>
-    <select name="light" value="<%= plant.light %>">
+    <select class="form-select form-select-sm" name="light" value="<%= plant.light %>">
         <option value="full sun" <%= plant.light === "full sun" ? 'selected' : '' %>>full sun</option>
         <option value="part sun" <%= plant.light === "part sun" ? 'selected' : '' %>>part sun</option>
         <option value="part shade" <%= plant.light === "part shade" ? 'selected': '' %>>part shade</option>
         <option value="full shade" <%= plant.light === "full shade" ? 'selected' : '' %>>full shade</option>
-    </select><br>
+    </select>
 
     <label>Water:</label>
-    <input type="text" name="water" value="<%= plant.water %>"><br>
+    <input class="form-control form-control-sm" type="text" name="water" value="<%= plant.water %>">
 
     <label>Ideal Temperature:</label>
-    <input type="number" name="idealTemp" min="50" max="90" value="<%= plant.idealTemp %>"> °F<br>
+    <input class="form-control form-control-sm" type="number" name="idealTemp" min="50" max="90" value="<%= plant.idealTemp %>"> °F<br>
 
-    <label>Humidity:</label>
-    <input type="range" id="humidity" name="humidity" min="0" max="100" step="10" value="<%= plant.humidity %>"> %<br>
+    <label for="edit-humidity" class="form-label">Humidity:</label>
+    <input class="form-range" type="range" id="edit-humidity" name="humidity" min="0" max="100" step="10" value="<%= plant.humidity %>"> %<br>
 
     <label>Soil:</label>
-    <input type="text" name="soil" value="<%= plant.soil %>"><br>
+    <input class="form-control form-control-sm" type="text" name="soil" value="<%= plant.soil %>">
 
     <label>Fertilizer:</label>
-    <input type="text" name="fertilizer" value="<%= plant.fertilizer %>"><br>
+    <input class="form-control form-control-sm" type="text" name="fertilizer" value="<%= plant.fertilizer %>">
 
     <label>Propagation:</label>
-    <select name="propagation">
+    <select class="form-select form-select-sm" name="propagation">
         <option value="seeds" <%= plant.propagation === "seeds" ? 'selected' : '' %>>seeds</option>
         <option value="bulbs" <%= plant.propagation === "bulbs" ? 'selected' : '' %>>bulbs</option>
         <option value="food scraps" <%= plant.propagation === "food scraps" ? 'selected' : '' %>>food scraps</option>

@@ -1,23 +1,26 @@
 <%- include('../partials/header') %>
 
+<div id="new-plant-page">
+  <h1 id="title"><%= title %></h1>
   <h2>Plant Profile</h2>
   <form id="new-plant-form" action="/plants" method="POST" enctype="multipart/form-data">
 
-
-    <label>Image:</label>
-    <input type="file" name="image" /><br />
+    <div class="mb-3">
+    <label for="add-new-image" class="form-label">Add plant image:</label>
+    <input class="form-control form-control-sm" id="add-new-image" type="file" name="image"/>
+    </div>
 
     <label>Common Name:</label>
-    <input type="text" name="commonName" /><br />
+    <input class="form-control form-control-sm" type="text" name="commonName" />
 
     <label>Scientific Name:</label>
-    <input type="text" name="scientificName" /><br />
+    <input class="form-control form-control-sm" type="text" name="scientificName" />
 
     <label>Adoption Date:</label>
-    <input type="date" name="adoptionDate" /><br />
+    <input class="form-control form-control-sm" type="date" name="adoptionDate" />
 
     <label>Location:</label>
-    <select name="location">
+    <select class="form-select form-select-sm" name="location">
       <option value="office">office</option>
       <option value="hall">hall</option>
       <option value="kitchen">kitchen</option>
@@ -27,39 +30,43 @@
       <option value="balcony">balcony</option>
       <option value="living room">living room</option>
       <option value="patio">patio</option>
-      <option value="bedroom">bedroom</option></select
-    ><br />
+      <option value="bedroom">bedroom</option>
+      </select>
 
-    <label>Toxicity:</label>
-    <input name="humanSafe" type="checkbox"><label>Human-Safe</label>
-    <input name="petSafe" type="checkbox"><label>Pet-Safe</label>
+    <label>Toxicity:</label><br>
+    <div class="form-check form-check-inline">
+    <input class="form-check-input" name="humanSafe" id="human-safe" type="checkbox"><label for="human-safe">Human-Safe</label>
+    </div>
+    <div class="form-check form-check-inline">
+    <input class="form-check-input" name="petSafe" id="pet-safe" type="checkbox"><label for="pet-safe">Pet-Safe</label>
+    </div>
 
     <h2>Plant Care</h2>
     <label>Light:</label>
-    <select name="light">
+    <select class="form-select form-select-sm" name="light">
       <option value="full sun">full sun</option>
       <option value="part sun">part sun</option>
       <option value="part shade">part shade</option>
-      <option value="full shade">full shade</option></select
-    ><br />
-
+      <option value="full shade">full shade</option>
+    </select>
+    
     <label>Water:</label>
-    <input type="text" name="water"><br>
+    <input class="form-control form-control-sm" type="text" name="water">
 
     <label>Ideal Temperature:</label>
-    <input type="number" name="idealTemp" min="50" max="90"> °F<br>
+    <input class="form-control form-control-sm" type="number" name="idealTemp" min="50" max="90"> °F<br>
 
-    <label>Humidity:</label>
-    <input type="range" id="humidity" name="humidity" min="0" max="100" step="10">%<br>
+    <label for="new-humidity" class="form-label">Humidity:</label>
+    <input class="form-range" type="range" id="new-humidity" name="humidity" min="0" max="100" step="10">%<br>
 
     <label>Soil:</label>
-    <input type="text" name="soil"><br>
+    <input class="form-control form-control-sm" type="text" name="soil">
 
     <label>Fertilizer</label>
-    <input type="text" name="fertilizer"><br>
+    <input class="form-control form-control-sm" type="text" name="fertilizer">
 
     <label>Propagation</label>
-    <select name="propagation">
+    <select class="form-select form-select-sm" name="propagation">
         <option value="seeds">seeds</option>
         <option value="bulbs">bulbs</option>
         <option value="food scraps">food scraps</option>
@@ -68,7 +75,7 @@
         <option value="grafting">grafting</option>
     </select><br>
 
-    <input type="submit" value="Add Plant" />
+    <button class="btn btn-success btn-sm" type="submit">Add Plant</button>
   </form>
-
+</div>
   <%- include('../partials/footer') %>
