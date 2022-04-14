@@ -1,4 +1,4 @@
-.brand-logo {
+/* .brand-logo {
   margin-left: 15px;
 }
 
@@ -28,7 +28,7 @@
 
 .login img {
   height: 30px;
-}
+} */
 
 #logo {
   width: 50px;
@@ -42,23 +42,37 @@ form {
 
 #title {
   font-family: 'Pacifico', cursive;
+  padding: 10px;
 }
 
 body {
   font-family: 'Baloo 2', cursive;
   background-color: #f2f2f2d9;
-  backgound-image: 
+  /* backgound-image:  */
 }
 
 #plant-image {
-  max-width: 50%;
+  max-width: 100%;
   height: auto;
 }
 
-#user-image {
+/* #user-image {
   border-radius: 50%;
-}
+} */
 
 nav {
   background-color: lightseagreen;
+}
+
+#app-name {
+  font-family: 'Pacifico', cursive;
+  padding-top: 20px;
+}
+
+#notes-content {
+  padding: 10px 10px;
+}
+
+#show-page {
+  padding: 10px;
 }

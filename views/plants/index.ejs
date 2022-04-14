@@ -1,18 +1,13 @@
 <%- include('../partials/header') %>
 
-<div class="user-profile">
-  <img id="user-image" src="<%= user.avatar %>" alt="User Avatar" />
-  <h3 id="user-name"><%= user.name %></h3>
-</div>
-
 <div class="container">
   <div class="row">
-    <div class="col-md-6 col-xs-6">
       <% plants.forEach(p => { %>
-      <img id="plant-image" src="/images/<%= p.image %>" class="img-responsive" alt="<%= p.commonName %>"/><br/>
-      <a id="plant-name" href="plants/<%= p._id %>"><%= p.commonName %></><br />
+        <div class="col">
+          <img id="plant-image" src="/images/<%= p.image %>" class="img-responsive" alt="<%= p.commonName %>"/><br/>
+          <a id="plant-name" href="plants/<%= p._id %>"><%= p.commonName %></>
+        </div>
       <% }) %>
-    </div>
   </div>
 </div>
 

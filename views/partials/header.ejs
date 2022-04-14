@@ -15,10 +15,10 @@
   <title><%= title %></title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-light" style="background-color: #ced9c0d9;">
     <div class="container-fluid">
       <% if (user) { %>
-        <h3 class="navbar-brand">Plant Diaries</h3>
+      <img id="logo" src="/images/logo.png" alt="App Logo"><h2 id="app-name" class="navbar-brand">Plant Diaries</h2>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -34,12 +34,13 @@
             <a class="nav-link" href="/search" <%- title === 'Plant Search' ? 'class="active"' : '' %>>PLANT SEARCH</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/logout">LOG OUT</a>
+            <a class="nav-link" href="/logout">LOG OUT - <%= user.name %></a>
           </li>
         </ul>
       </div>
 
       <% } else { %>
+        <img id="logo" src="/images/logo.png" alt="App Logo">
         <a href="/auth/google" class="login">LOG IN&nbsp;</a>
       <% } %>
 

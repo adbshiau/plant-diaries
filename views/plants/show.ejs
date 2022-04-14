@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-
+  <div id="show-page">
   <img id="plant-image" src="/images/<%= plant.image %> " /><br />
   <a href="<%= plant._id %>/edit">Edit Information</a><br />
 
@@ -60,13 +60,17 @@
     <tbody>
       <% plant.notes.forEach(n => { %>
       <tr>
-        <td><%= n.content %></td>
+        <td id="notes-content"><%= n.content %></td>
         <td>
-          <a href="/notes/<%= n._id %>/edit"><button>✎</button></a>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <a href="/notes/<%= n._id %>/edit"><button class="btn btn-outline-success btn-sm">✎</button></a>
+        </div>
         </td>
         <td>
           <form action="/notes/<%= n._id %>?_method=DELETE" method="POST">
-            <button type="submit">✕</button>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-outline-dark btn-sm">✕</button>
+          </div>
           </form>
         </td>
       </tr>
@@ -75,18 +79,14 @@
   </table>
   <% } %>
 
-  <form
-    id="add-note-form"
-    method="POST"
-    action="/plants/<%= plant._id %>/notes"
-  >
-    <textarea name="content"></textarea><br />
-    <input type="submit" value="Add Note" />
+  <form id="add-note-form" method="POST" action="/plants/<%= plant._id %>/notes">
+    <textarea class="form-control" placeholder="Additional Care" name="content" id="floatingTextarea2" style="height: 100px"></textarea><br/>
+    <button type="submit" class="btn btn-success">Add Note</button>
   </form>
-  <br />
+  <br/>
 
   <form action="/plants/<%= plant._id %>?_method=DELETE" method="POST">
-    <button type="submit">Delete Plant</button>
+    <button type="submit" class="btn btn-outline-danger">Delete Plant</button>
   </form>
-
+</div>
   <%- include('../partials/footer') %>
