@@ -15,7 +15,6 @@ module.exports = {
 }
 
 function index(req, res) {
-    // console.log(req.user, ' <- req.user');
     Plant.find({userOwns: req.user._id}, function(err, plantDocs) {
         // console.log(plantDocs);
         res.render('plants/index', {
@@ -35,7 +34,7 @@ function create(req, res) {
     req.body.humanSafe = !!req.body.humanSafe;
     req.body.petSafe = !!req.body.petSafe;
 
-    if (req.file.originalname.includes('.heic')) {
+    if (req.file.originalname.includes('.heic') || req.file.originalname.includes('.HEIC')) {
         heicToJpg(req.file);
         console.log("HEIC!!!")
         req.body.image = req.file.originalname.split('.heic').join('.jpeg');
@@ -49,11 +48,6 @@ function create(req, res) {
         console.log(plant, ' <- plant created')
         res.redirect(`/plants/${plant._id}`);
     })
-    // if (req.file.originalname.includes('.heic')) {
-    //     heicToJpg(req.file);
-    //     console.log("HEIC!!!")
-    // }
-    // else console.log("NOT HEIC!!!")
 }
 
 function show(req, res) {
@@ -79,10 +73,12 @@ function update(req, res) {
     req.body.humanSafe = !!req.body.humanSafe;
     req.body.petSafe = !!req.body.petSafe;
     if (req.file) {
-        req.body.image = req.file.originalname;
+        if (req.file.originalname.includes('.heic') || req.file.originalname.includes('.HEIC')) {
+            heicToJpg(req.file);
+            req.body.image = req.file.originalname.split('.heic').join('.jpeg');
+        }
+        else req.body.image = req.file.originalname;
     }
-    console.log(req.body.image, ' <- req.body.image');
-    // console.log(req.file.originalname, ' <- req.file.originalname');
     Plant.findOneAndUpdate(
         {_id: req.params.id, userOwns: req.user._id},
         // update object with updated properties
