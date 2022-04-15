@@ -8,6 +8,7 @@ module.exports = {
   update,
 };
 
+// handle new note form being submitted
 function create(req, res) {
   Plant.findById(req.params.id, function (err, plantDoc) {
     // add user-centric info
@@ -23,6 +24,7 @@ function create(req, res) {
   });
 }
 
+// delete specified note
 function deleteNote(req, res) {
   Plant.findOne(
     { "notes._id": req.params.id, "notes.userId": req.user.id },
@@ -36,6 +38,7 @@ function deleteNote(req, res) {
   );
 }
 
+// return view (form) to edit contents of a note
 function edit(req, res) {
   Plant.findOne(
     { "notes._id": req.params.id, "notes.userId": req.user.id },
@@ -51,6 +54,7 @@ function edit(req, res) {
   );
 }
 
+// update specified note
 function update(req, res) {
   // "dot" syntax to query on the property of the notes subdoc
   Plant.findOne({ "notes._id": req.params.id }, function (err, plantDoc) {

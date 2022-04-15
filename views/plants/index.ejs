@@ -6,16 +6,15 @@
         <% plants.forEach(p => { %>
           <div class="col">
             <img id="plant-image" src="/images/<%= p.image %>" class="img-responsive" alt="<%= p.commonName %>"/><br/>
-            <a id="plant-name" href="plants/<%= p._id %>"><%= p.commonName %></>
+            <a id="plant-name" class="link-success" href="plants/<%= p._id %>"><%= p.commonName %></>
           </div>
         <% }) %>
     </div>
   </div>
 
-  <% } else { %>
-    <p id="add-plants">Add some plants to your page!</p>
-    <a id="add-plants-tag" href="/plants/new"><button class="btn btn-outline-success btn-sm">Add Plants</button></a>
-    
+<% } else { %>
+    <p id="add-plants">Add some plants to your space!</p>
+    <a id="add-plants-tag " href="/plants/new"><button class="btn btn-outline-dark btn-sm">Add Plants</button></a>
 <% } %>
 
 

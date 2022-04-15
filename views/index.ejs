@@ -5,4 +5,8 @@
     <p>Keep track of your plant babies!</p>
 </div>
 
+<% if (!user) { %>
+    <a id="log-in" href="/auth/google"><buton class="btn btn-outline-dark btn-sm">LOG IN&nbsp;</buton></a>
+<% } %>
+
 <%- include('partials/footer') %>

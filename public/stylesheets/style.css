@@ -16,6 +16,7 @@ form {
 body {
   font-family: 'Baloo 2', cursive;
   background-color: #f2f2f2d9;
+  font-size: medium;
   /* background-image: url(https://images.unsplash.com/photo-1604762525953-2c80447cc4a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
   background-repeat: no-repeat;
   background-position: center; */
@@ -57,12 +58,37 @@ nav {
   padding-top: 20px;
 }
 
+#log-in {
+  padding-left: 200px;
+}
+
 #notes-content {
   padding: 10px 10px;
 }
 
 #show-page {
   padding: 10px;
+}
+
+#edit-btn {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+}
+
+/* #labels {
+  padding-right: 50px;
+}
+
+.details {
+  display: inline-grid;
+  grid-template-rows: 1fr 1fr;
+} */
+
+.plant-profile-care {
+  background-color: #dedfe2d9;
+  text-align: center;
+  padding: 2px;
 }
 
 #edit-page {
@@ -90,6 +116,11 @@ nav {
 
 #add-plants-tag {
   padding: 10px;
+}
+
+#plant-name {
+  display: flex;
+  justify-content: center;
 }
 
 /* small is 576+ pixels */

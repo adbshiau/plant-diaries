@@ -10,6 +10,8 @@
     <input class="form-control form-control-sm" id="update-image" type="file" name="image"/>
     </div>
 
+    <h4 class="plant-profile-care">Plant Profile</h4>
+
     <label>Common Name:</label>
     <input class="form-control form-control-sm" type="text" name="commonName" value="<%= plant.commonName %>">
 
@@ -41,7 +43,7 @@
     <input class="form-check-input" name="petSafe" id="pet-safe" type="checkbox" <%= plant.petSafe === true ? 'checked' : '' %>><label for="pet-safe">Pet-Safe</label><br>
     </div>
 
-    <h2>Plant Care</h2>
+    <h4 class="plant-profile-care">Plant Care</h4>
 
     <label>Light:</label>
     <select class="form-select form-select-sm" name="light" value="<%= plant.light %>">

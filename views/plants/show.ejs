@@ -2,18 +2,16 @@
 
   <div id="show-page">
   <h1 id="title"><%= title %></h1>
-  <img id="plant-image" src="/images/<%= plant.image %> " /><br />
-  <a href="<%= plant._id %>/edit"><button class="btn btn-outline-success btn-sm">Edit Information</button></a><br />
+  <img id="plant-image" src="/images/<%= plant.image %>"/><br />
+  <a id="edit-btn" href="<%= plant._id %>/edit"><button class="btn btn-outline-success btn-sm">Edit Information</button></a>
+  
+  <h4 class="plant-profile-care">Plant Profile</h4>
+  
+  <label id="labels">Scientific Name:</label>
+  <%= plant.scientificName %><br/>
 
-  <h2>Plant Profile</h2>
-
-  <label>Scientific Name:</label>
-  <%= plant.scientificName %><br />
-
-  <% if (plant.adoptionDate) { %>
-  <label>Adoption Date:</label>
+  <label id="labels">Adoption Date:</label>
   <%= plant.adoptionDate.split('-').reverse().join('-') %><br />
-  <% } %>
 
   <label>Location:</label>
   <%= plant.location %><br />
@@ -28,8 +26,8 @@
   <% if (plant.humanSafe && plant.petSafe) { %> 
     human-safe and pet-safe 
     <% } %>
-
-  <h2>Plant Care</h2>
+  
+  <h4 class="plant-profile-care">Plant Care</h4>
 
   <label>Light:</label>
   <%= plant.light %><br />

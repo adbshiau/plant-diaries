@@ -14,9 +14,9 @@ module.exports = {
     delete: deletePlant
 }
 
+// view all plants created by the user
 function index(req, res) {
     Plant.find({userOwns: req.user._id}, function(err, plantDocs) {
-        // console.log(plantDocs);
         res.render('plants/index', {
             plants: plantDocs,
             title: "Your Plants"
@@ -24,19 +24,21 @@ function index(req, res) {
     })
 }
 
+// return view (form) to add new plant
 function newPlant(req, res) {
     res.render('plants/new', {
         title: 'Add New Plant'
     });
 }
 
+// handle new plant form being submitted
 function create(req, res) {
     req.body.humanSafe = !!req.body.humanSafe;
     req.body.petSafe = !!req.body.petSafe;
-
+    // converts HEIC file to JPEG
     if (req.file.originalname.includes('.heic') || req.file.originalname.includes('.HEIC')) {
         heicToJpg(req.file);
-        console.log("HEIC!!!")
+        // renames filename to image.jpeg
         req.body.image = req.file.originalname.split('.heic').join('.jpeg');
     }
     else req.body.image = req.file.originalname;
@@ -45,11 +47,11 @@ function create(req, res) {
     plant.userOwns = req.user._id;
     plant.save(function(err) {
         if (err) return res.redirect('plants/new');
-        console.log(plant, ' <- plant created')
         res.redirect(`/plants/${plant._id}`);
     })
 }
 
+// view details of any plant
 function show(req, res) {
     Plant.findOne({'_id': req.params.id}, function(err, plantDoc) {
         res.render('plants/show', {
@@ -59,6 +61,7 @@ function show(req, res) {
     });
 }
 
+// return view (form) to edit specified plant information
 function edit(req, res) {
     Plant.findById((req.params.id), function(err, plantDoc) {
         if (err || !plantDoc) return res.redirect('/plants')
@@ -69,12 +72,15 @@ function edit(req, res) {
     })
 }
 
+// handle edit plant form being submitted
 function update(req, res) {
     req.body.humanSafe = !!req.body.humanSafe;
     req.body.petSafe = !!req.body.petSafe;
+    // converts HEIC to JPEG
     if (req.file) {
         if (req.file.originalname.includes('.heic') || req.file.originalname.includes('.HEIC')) {
             heicToJpg(req.file);
+            // renames filename to image.jpeg
             req.body.image = req.file.originalname.split('.heic').join('.jpeg');
         }
         else req.body.image = req.file.originalname;
@@ -86,7 +92,6 @@ function update(req, res) {
         // options with new: true to make sure updated doc is returned
         {new: true},
         function(err, plantDoc) {
-            console.log(plantDoc, ' <- plantDoc')
             if (err || !plantDoc) return res.redirect('/plants')
             res.redirect(`/plants/${plantDoc._id}`); 
         }
