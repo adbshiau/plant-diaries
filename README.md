@@ -52,6 +52,7 @@ Trello board: https://trello.com/b/XUUmrKRI/user-stories
 
 ## Assets Used:
 Landing page image from https://unsplash.com/photos/MBsReSZ2WNM
+Plant logo from https://creazilla.com/nodes/63919-potted-plant-clipart
 
 ## Acknowledgements:
 
