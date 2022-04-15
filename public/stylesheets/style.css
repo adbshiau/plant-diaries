@@ -99,6 +99,10 @@ nav {
   padding: 10px 0px 0px 0px;
 }
 
+#edit-note-page {
+  padding: 10px;
+}
+
 #floatingTextarea2 {
   width: 50px
   padding-bottom: 10px;
@@ -115,7 +119,7 @@ nav {
 }
 
 #add-plants-tag {
-  padding: 10px;
+  padding-left: 10px;
 }
 
 #plant-name {
