@@ -2,7 +2,7 @@
 
 Being surrounded and caring for plants boosts our spirits and enhance our environments.
 
-This plant journal is essentially a log for keeping track of your plants and their care routine. You can also use it to make notes about new and exciting growth, and even add and update an image.
+A comprehensive plant journal designed to effortlessly monitor your plants and their care routines. Seamlessly track essential information and stay connected to your plants' growth and development. Capture and document noteworthy milestones, while conveniently adding and updating accompanying images. This all-in-one plant journal is your ultimate companion for nurturing and documenting your plant collection.
 
 Launch the app: https://plant-diaries.herokuapp.com/
 
